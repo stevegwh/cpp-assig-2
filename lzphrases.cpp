@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <set>
 #include <algorithm>
 #include <iterator>
 
@@ -43,11 +44,10 @@ int main(int argc, char *argv[])
 {
   char ch;
   std::string s;
-  std::vector<std::string> seen;
+  std::set<std::string> seen;
   while(std::cin.get(ch)) {
     s += ch;
-    if(std::find(std::begin(seen), std::end(seen), s) == std::end(seen)) {
-      seen.push_back(s);
+    if (seen.insert(s).second) {
       std::cout << escapeString(s) << std::endl;
       s = "";
     }
