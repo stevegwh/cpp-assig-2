@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <map>
 #include <set>
 #include <algorithm>
 #include <iterator>
@@ -41,12 +42,18 @@ std::string escapeString(const std::string& str)
 int main(int argc, char *argv[])
 {
   char ch;
+  int i = 1;
   std::string s;
   std::set<std::string> seen;
+  std::map<std::string, unsigned int> serials;
+  serials[""] = 0;
   while(std::cin.get(ch)) {
+    std::string copy = s;
     s += ch;
     if (seen.insert(s).second) {
-      std::cout << escapeString(s) << std::endl;
+      serials[s] = i;
+      std::cout << std::to_string(serials[copy]) + escapeChars(ch) << std::endl;
+      i++;
       s = "";
     }
   }

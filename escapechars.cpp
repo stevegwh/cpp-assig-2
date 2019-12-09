@@ -20,8 +20,7 @@ std::string escapeChars(char ch)
   if (ch == '\r') {
     return "\\r";
   }
-  // TODO: Check if this is correct.
-  if (isspace(ch)) {
+  if (ch == ' ') {
     return "\\s";
   }
   return std::string(1, ch);
