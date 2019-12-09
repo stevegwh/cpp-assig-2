@@ -4,26 +4,29 @@
 
 std::string escapeChars(char ch) 
 {
-  if (ch == '\\') {
-    return "\\";
-  }
   if (isdigit(ch)) {
     std::string s = "\\";
     return  s + ch;
   }
-  if (ch == '\n') {
-    return "\\n";
+  switch(ch) {
+    case('\\'):
+      return "\\";
+      break;
+    case('\n'):
+      return "\\n";
+      break;
+    case('\t'):
+      return "\\t";
+      break;
+    case('\r'):
+      return "\\r";
+      break;
+    case(' '):
+      return "\\s";
+      break;
+    default:
+    return std::string(1, ch);
   }
-  if (ch == '\t') {
-    return "\\t";
-  }
-  if (ch == '\r') {
-    return "\\r";
-  }
-  if (ch == ' ') {
-    return "\\s";
-  }
-  return std::string(1, ch);
 };
 
 int main(int argc, char *argv[])
