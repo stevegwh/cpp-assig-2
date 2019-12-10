@@ -55,7 +55,6 @@ int main(int argc, char *argv[])
       s = "";
     }
   }
-  if (s != "") std::cout << escapeString(s) << std::endl;
-  std::cout << std::to_string(ch) << std::endl;
+  if (s != "") std::cout << std::to_string(serials[s.substr(0, s.size() - 1)]) + escapeString(s.substr(s.size() - 1)) << std::endl;
   return 0;
 }
